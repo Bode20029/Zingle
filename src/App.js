@@ -4,6 +4,7 @@ import AppHeader from './components/AppHeader';
 import TattooItem from './components/TattooItem';
 import TattooPost from './components/TattooPost';
 import tattoos from './data/tattoos';
+import AppSearch from './components/AppSearch';
 
 function App() {
   const [selectedTattoo, setSelectedTattoo] = useState(null);
@@ -36,20 +37,15 @@ function App() {
   return (
     <div className="app">
       <AppHeader />
-      <div className='app-search'>
-        <input 
-          className='app-search-input'
-          type='text' 
-          placeholder='Search'
-          value={searchText}
-          onChange={(e) => {setSearchText(e.target.value)}}
-        />
-
-      </div>
+      <section className='app-section'>
+        <div className='app-container'>
+        <AppSearch value={searchText} onValueChange={setSearchText} />
       <button onClick={() => {onTattooOpenClick(tattoos[3])}}>สักหน่อยมั้ยล่ะ</button>
       <div className="app-grid">
         {tattooElements}
       </div>
+        </div>
+      </section>
       {tattooPost}
     </div>
     
